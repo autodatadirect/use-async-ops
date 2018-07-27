@@ -1,0 +1,12 @@
+{
+    "presets": [
+      "env"
+    ],
+    "compact": true,
+    "minified": true,
+    "plugins": [
+      "transform-object-rest-spread",
+      "transform-runtime"
+    ]
+  }
+  

@@ -1,0 +1,28 @@
+{
+  "name": "async-ops",
+  "version": "1.0.0",
+  "description": "A library for redux saga asynchronous calls",
+  "main": "./dist/index.js",
+  "repository": "https://github.com/autodatadirect/async-ops",
+  "scripts": {
+    "build": "babel ./src -d ./dist",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "ops",
+    "saga",
+    "redux",
+    "async"
+  ],
+  "author": "Auto Data Direct, Inc.",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-preset-env": "1.7.0",
+    "babel-runtime": "6.26.0",
+    "redux-saga": "0.16.0"
+  }
+}
