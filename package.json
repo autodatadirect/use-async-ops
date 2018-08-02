@@ -6,7 +6,8 @@
   "repository": "https://github.com/autodatadirect/async-ops",
   "scripts": {
     "build": "babel ./src -d ./dist",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "lint": "standard \"./src/**/*.js\" | snazzy"
   },
   "keywords": [
     "ops",
@@ -19,10 +20,16 @@
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-core": "6.26.3",
+    "babel-eslint": "8.2.6",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "1.7.0",
     "babel-runtime": "6.26.0",
-    "redux-saga": "0.16.0"
+    "redux-saga": "0.16.0",
+    "snazzy": "7.1.1",
+    "standard": "11.0.1"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
