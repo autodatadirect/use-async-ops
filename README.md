@@ -30,9 +30,6 @@ const mock = request => Promise.reject(Error('request is invalid'))
 register('fetchData', service, mock)
 ```
 
-### `getOperation(name:String) : Function`
-The `getOperation` method returns the `operation` associated with a given name key.  If `mock` is enabled, the `mockOperation` will be returned instead.
-
 #### Arguments
 
 **`name : String [required]`** The name of the operation.
