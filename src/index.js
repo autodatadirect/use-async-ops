@@ -5,10 +5,6 @@ import saga from './saga'
 import { get as getOperation, register } from './operations'
 import { isAsyncOperation, isAsyncComplete, isAsyncFailure } from './helpers'
 
-window.ASYNC_OPS = {
-  mock
-}
-
 export {
   register,
   getOperation,
