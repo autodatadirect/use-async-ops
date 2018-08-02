@@ -30,13 +30,6 @@ const mock = request => Promise.reject(Error('request is invalid'))
 register('fetchData', service, mock)
 ```
 
-#### Arguments
-
-**`name : String [required]`** The name of the operation.
-
-#### Return : Function(...args)
-`getOperation` returns the previously registered `operation` method (or its `mockOperation`).
-
 ### `callOperation(name:String, ...args) : Function`
 The `callOperation` method retrieves the `operation` registered at the provided name and then calls it, passing in `..args` to the called method.
 
