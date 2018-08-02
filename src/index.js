@@ -1,4 +1,4 @@
-import mock from './mock'
+import { enable as enableMock, disable as disableMock } from './mock'
 import * as actions from './actions'
 import * as actionTypes from './actionTypes'
 import saga from './saga'
@@ -8,7 +8,8 @@ import { isAsyncOperation, isAsyncComplete, isAsyncFailure } from './helpers'
 export {
   register,
   getOperation,
-  mock,
+  enableMock,
+  disableMock,
   actions,
   actionTypes,
   saga,
@@ -20,7 +21,8 @@ export {
 export default {
   register,
   getOperation,
-  mock,
+  enableMock,
+  disableMock,
   actions,
   actionTypes,
   saga,
