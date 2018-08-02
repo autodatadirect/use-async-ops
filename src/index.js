@@ -2,12 +2,12 @@ import mock from './mock'
 import * as actions from './actions'
 import * as actionTypes from './actionTypes'
 import saga from './saga'
-import { get as getOperation, register } from './operations'
+import { call as callOperation, register } from './operations'
 import { isAsyncOperation, isAsyncComplete, isAsyncFailure } from './helpers'
 
 export {
   register,
-  getOperation,
+  callOperation,
   mock,
   actions,
   actionTypes,
@@ -19,7 +19,7 @@ export {
 
 export default {
   register,
-  getOperation,
+  callOperation,
   mock,
   actions,
   actionTypes,

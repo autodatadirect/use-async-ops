@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import { OPERATION, COMPLETE, FAILURE } from './actionTypes'
-import { get as getOperation } from './operations'
+import { call as callOperation } from './operations'
 import { enabled as mockEnabled } from './mock'
 
 export default function * (action) {
@@ -16,10 +16,7 @@ function * loader (action) {
     args
   }
   try {
-    const operation = getOperation(name)
-    if (!operation) throw new Error('ASYNC_OPERATION_NOT_REGISTERED')
-
-    const response = yield call(operation, ...action.args)
+    const response = yield call(callOperation, name, ...action.args)
 
     const responseAction = {
       ...responseObject,
