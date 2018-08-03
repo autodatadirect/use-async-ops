@@ -37,7 +37,7 @@ The `callOperation` method retrieves the `operation` registered at the provided 
 
 **`name : String [required]`** The name of the operation.
 
-**`...args`** The arguments to be passed to the `operation` when it is called.
+**`...args [optional]`** The arguments to be passed to the `operation` when it is called.
 
 
 #### Return : Promise(result)
@@ -75,14 +75,14 @@ The `asyncOperationStart` method creates an action which starts an async operati
 **`name : String`** The name of the operation to be called.
 
 **`options : Object`** An options object to use to call.  The options object has the following possible properties:
-* *`name : String [Required]`* The operation name.
-* *`channel : String [Optional]`* A channel name to isolate operation call from other calls of the same operation.
+* *`name : String [required]`* The operation name.
+* *`channel : String [optional]`* A channel name to isolate operation call from other calls of the same operation.o
 
 **`...args`** The arguments to be passed to the `operation` when it is called.
 
 #### Return : Object
 The `asyncOperationStart` method returns a Redux-formatted action object with the following properties:
-  * *`type : String [Required]`* This is always set to `'ASYNC_OPERATION'`
+  * *`type : String`* This is always set to `'ASYNC_OPERATION'`
   * *`...args : Array[arg1, arg2, ...]`* an array of the args provided.
   * *`...options`* any other option values provided to the method
 
@@ -121,9 +121,9 @@ These three methods are helper methods.  They return a match function which take
 
 #### Arguments
 
-**`name : String [Required]`** The name of the operation to be matched.
+**`name : String [required]`** The name of the operation to be matched.
 
-**`channel : String [Optional]`** A channel name to be matched.
+**`channel : String [optional]`** A channel name to be matched.
 
 #### Return : Function(action : Object)
 The method returned from the helper methods takes an action object and returns either `true` if the action matches the provided info or `false` if the action does not.
