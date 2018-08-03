@@ -1,5 +1,14 @@
 # Async-Ops
-Async-Ops is a library for performing asynchronous service calls in Redux applications.  Async-Ops is optimized for use with [Redux-Sagas](https://redux-saga.js.org/).
+Async-Ops is a library for performing asynchronous service calls in Redux applications.  Async-Ops is made for use with [Redux-Sagas](https://redux-saga.js.org/).
+
+## Motivations
+> Why does Async-Ops exist?  What problem is this library trying to solve?
+
+When using Redux with Redux-Sagas, asynchronous options end up being fairly complicated.  By using a separate saga for each service call, you have to create boilerplate code for action types, action creators, sagas, and reducers.  These bits of code end up being duplicative and cluttering up the code base.
+
+Other libraries exist for handling asynchronous actions, usually by including middlewares.  However, if you are already using the Redux-Saga middleware, it adds an extra layer of complication to add a new middleware on top of Redux-Sagas.
+
+**Async-Ops** uses the Redux-Saga middleware to handle asynchronous operations, unifying all types of async calls under a small number of actionTypes which are handled by a single saga.  Whenever you want to add a new asynchronous operation, all that you need to do is create an operation method using whatever technology you like (we like to use the Javascript `fetch` API for simplicity), register that operation, and fire the Async-Ops actions with the registered name and, boom.
 
 ## Usage
 Async-Ops is available on npm with the following command:
