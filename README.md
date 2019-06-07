@@ -139,7 +139,7 @@ The function returned from the helper functions takes an action object and retur
 
 ### `reducer : Function`
 
-The `reducer` is a Redux reducer function that can added to an app's reducer to keep the store updated with the status about the latest async-ops calls.  It must be put under the key 'asyncops' which can be imported from the async-ops package as `STORE_DOMAIN`.
+The `reducer` is a Redux reducer function that can be added to an app's reducer to keep the store updated with the status about the latest async-ops calls.  It must be put under the key 'asyncops' which can be imported from the async-ops package as `STORE_DOMAIN`.
 
 ### `loadingSelector : Function`
 
