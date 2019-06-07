@@ -4,7 +4,7 @@ import * as actionTypes from './actionTypes'
 import saga from './saga'
 import { call as callOperation, register } from './operations'
 import * as reducerHelpers from './helpers'
-import reducer from './reducer'
+import reducer, { STORE_DOMAIN } from './reducer'
 import * as selectors from './selectors'
 
 const isAsyncOperation = reducerHelpers.isAsyncOperation
@@ -24,7 +24,8 @@ export {
   isAsyncComplete,
   isAsyncFailure,
   reducer,
-  selectors
+  selectors,
+  STORE_DOMAIN
 }
 
 export default {
@@ -40,5 +41,6 @@ export default {
   isAsyncComplete,
   isAsyncFailure,
   reducer,
-  selectors
+  selectors,
+  STORE_DOMAIN
 }
