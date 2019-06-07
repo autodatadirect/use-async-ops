@@ -69,7 +69,7 @@ const x = await callOperation('fetchData', 1) // x = 2
 The `enableMock` function causes `callOperation` to use the `mockOperation` function rather than the  `operation` function.  The current mock status is set in the client's Local Storage.
 
 ### `disableMock() : Function`
-The `enableMock` function causes `callOperation` to use the `mockOperation` function rather than the  `operation` function.  The current mock status is set in the client's Local Storage.
+The `disableMock` function causes `callOperation` to use the `mockOperation` function rather than the  `operation` function.  The current mock status is set in the client's Local Storage.
 
 ### `actions : Object`
 
@@ -85,7 +85,7 @@ The `asyncOperationStart` function creates an action which starts an async opera
 
 **`options : Object`** An options object to use to call.  The options object has the following possible properties:
 * *`name : String [required]`* The operation name.
-* *`channel : String [optional]`* A channel name to isolate operation call from other calls of the same operation.o
+* *`channel : String [optional]`* A channel name to isolate operation call from other calls of the same operation.
 
 **`...args`** The arguments to be passed to the `operation` when it is called.
 
@@ -119,7 +119,7 @@ The `saga` is a `Redux-Sagas` generator function which can be used with the Redu
 #### Example
 ```javascript
 import { saga } from 'async-ops'
-import sageMiddleware from './sageMiddleware'
+import sagaMiddleware from './sagaMiddleware'
 
 sagaMiddleware.run(saga)
 ```
