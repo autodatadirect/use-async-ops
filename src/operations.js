@@ -11,7 +11,7 @@ export const register = (name, operation, mock) => {
   mocks[name] = mock
 }
 
-export const get = name => mock.enabled() ? mocks[name] : operations[name]
+export const get = name => (mock.enabled() && mocks[name]) ? mocks[name] : operations[name]
 
 export const call = async (name, ...args) => {
   const operation = get(name)
