@@ -141,6 +141,16 @@ The function returned from the helper functions takes an action object and retur
 
 The `reducer` is a Redux reducer function that can be added to an app's reducer to keep the store updated with the status about the latest async-ops calls.  It must be put under the key 'asyncops' which can be imported from the async-ops package as `STORE_DOMAIN`.
 
+#### Example
+```javascript
+import { combineReducers } from 'redux'
+import { reducer as asyncops } from 'async-ops'
+
+const rootReducer = combineReducers({
+  asyncops
+})
+```
+
 ### `loadingSelector : Function`
 
 This selector function can be used to determine the loading state of an asynchronous operation.
@@ -156,18 +166,13 @@ The function returned from the selector functions takes a state object and retur
 
 #### Example
 ```javascript
-import { loadingSelector } from 'async-ops'
+import { selectors } from 'async-ops'
 
 const mapStateToProps = state => ({
-  testOpIsLoading: loadingSelector('testOp')(state)
+  testOpIsLoading: selectors.loadingSelector('testOp')(state)
 })
 ```
 
-export const loadingSelector = (name, channel) => state =>
-  statusSelector(name, channel).loading || false
-
-export const errorSelector = (name, channel) => state =>
-  statusSelector(name, channel).error || null
 ### `errorSelector : Function`
 
 This selector function can be used to retrieve error data from an asynchronous operation.
@@ -183,9 +188,9 @@ The function returned from the selector functions takes a state object and retur
 
 #### Example
 ```javascript
-import { errorSelector } from 'async-ops'
+import { selectors } from 'async-ops'
 
 const mapStateToProps = state => ({
-  testOpError: errorSelector('testOp')(state)
+  testOpError: selectors.errorSelector('testOp')(state)
 })
 ```
