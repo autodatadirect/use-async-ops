@@ -1,4 +1,4 @@
-import { getReducerkey, STORE_DOMAIN } from './selectors'
+import { getReducerkey, STORE_DOMAIN } from './reducers'
 
 export const statusSelector = (name, channel) => state =>
   state[STORE_DOMAIN][getReducerkey({ name, channel })] || {}
