@@ -18,15 +18,15 @@
   "author": "Auto Data Direct, Inc.",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-core": "6.26.3",
-    "babel-eslint": "8.2.6",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-plugin-transform-runtime": "6.23.0",
-    "babel-preset-env": "1.7.0",
-    "babel-runtime": "6.26.0",
+    "@babel/cli": "7.5.5",
+    "@babel/core": "7.5.5",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
+    "@babel/preset-env": "7.5.5",
+    "@babel/runtime": "7.5.5",
+    "babel-eslint": "10.0.2",
+    "babel-plugin-transform-object-rest-spread": "7.0.0-beta.3",
     "snazzy": "7.1.1",
-    "standard": "12.0.1"
+    "standard": "13.1.0"
   },
   "peerDependencies": {
     "redux-saga": "0.16.0"
