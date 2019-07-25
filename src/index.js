@@ -3,7 +3,13 @@ import * as actions from './actions'
 import * as actionTypes from './actionTypes'
 import saga from './saga'
 import { call as callOperation, register } from './operations'
-import { isAsyncOperation, isAsyncComplete, isAsyncFailure } from './helpers'
+import * as reducerHelpers from './helpers'
+import reducer, { STORE_DOMAIN } from './reducer'
+import * as selectors from './selectors'
+
+const isAsyncOperation = reducerHelpers.isAsyncOperation
+const isAsyncComplete = reducerHelpers.isAsyncComplete
+const isAsyncFailure = reducerHelpers.isAsyncFailure
 
 export {
   register,
@@ -13,9 +19,13 @@ export {
   actions,
   actionTypes,
   saga,
+  reducerHelpers,
   isAsyncOperation,
   isAsyncComplete,
-  isAsyncFailure
+  isAsyncFailure,
+  reducer,
+  selectors,
+  STORE_DOMAIN
 }
 
 export default {
@@ -26,7 +36,11 @@ export default {
   actions,
   actionTypes,
   saga,
+  reducerHelpers,
   isAsyncOperation,
   isAsyncComplete,
-  isAsyncFailure
+  isAsyncFailure,
+  reducer,
+  selectors,
+  STORE_DOMAIN
 }

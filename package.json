@@ -1,6 +1,6 @@
 {
   "name": "async-ops",
-  "version": "1.1.2",
+  "version": "1.1.6",
   "description": "A library for redux saga asynchronous calls",
   "main": "./dist/index.js",
   "repository": "https://github.com/autodatadirect/async-ops",
@@ -25,9 +25,11 @@
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "1.7.0",
     "babel-runtime": "6.26.0",
-    "redux-saga": "0.16.0",
     "snazzy": "7.1.1",
-    "standard": "11.0.1"
+    "standard": "12.0.1"
+  },
+  "peerDependencies": {
+    "redux-saga": "0.16.0"
   },
   "standard": {
     "parser": "babel-eslint"
