@@ -1,12 +1,10 @@
 {
-    "presets": [
-      "env"
-    ],
-    "compact": true,
-    "minified": true,
-    "plugins": [
-      "transform-object-rest-spread",
-      "transform-runtime"
-    ]
-  }
-  
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "compact": true,
+  "minified": true,
+  "plugins": [
+    "transform-object-rest-spread"
+  ]
+}
