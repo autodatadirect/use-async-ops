@@ -18,3 +18,8 @@ export const call = async (name, ...args) => {
   if (!operation) throw new Error('ASYNC_OPERATION_NOT_REGISTERED')
   return operation(...args)
 }
+
+export default {
+  operations,
+  mocks
+}

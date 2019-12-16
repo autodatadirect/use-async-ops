@@ -1,7 +1,7 @@
 {
-  "name": "async-ops",
-  "version": "1.1.6",
-  "description": "A library for redux saga asynchronous calls",
+  "name": "use-async-ops",
+  "version": "1.0.0",
+  "description": "A library for asynchronous calls in react",
   "main": "./dist/index.js",
   "repository": "https://github.com/autodatadirect/async-ops",
   "scripts": {
@@ -18,20 +18,24 @@
   "author": "Auto Data Direct, Inc.",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "7.5.5",
-    "@babel/core": "7.5.5",
-    "@babel/plugin-syntax-dynamic-import": "7.2.0",
-    "@babel/preset-env": "7.5.5",
-    "@babel/runtime": "7.5.5",
-    "babel-eslint": "10.0.2",
-    "babel-plugin-transform-object-rest-spread": "7.0.0-beta.3",
-    "snazzy": "7.1.1",
-    "standard": "13.1.0"
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/runtime": "^7.7.6",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "snazzy": "^8.0.0",
+    "standard": "^14.3.1"
   },
   "peerDependencies": {
-    "redux-saga": "0.16.0"
+    "react": "^16.12.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "standard": {
-    "parser": "babel-eslint"
+    "env": [
+      "jest"
+    ]
   }
 }
