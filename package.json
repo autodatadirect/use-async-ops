@@ -1,7 +1,7 @@
 {
   "name": "use-async-ops",
   "version": "1.0.0",
-  "description": "A library for asynchronous calls in react",
+  "description": "A library for asynchronous calls in React",
   "main": "./dist/index.js",
   "repository": "https://github.com/autodatadirect/async-ops",
   "scripts": {
@@ -10,9 +10,8 @@
     "lint": "standard \"./src/**/*.js\" | snazzy"
   },
   "keywords": [
+    "react",
     "ops",
-    "saga",
-    "redux",
     "async"
   ],
   "author": "Auto Data Direct, Inc.",
