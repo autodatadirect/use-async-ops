@@ -5,6 +5,7 @@ import RunningOpsProvider from './RunningOpsProvider'
 import { register as registerPlugin } from './plugins'
 import { register } from './registry'
 import { enable as enableMock, disable as disableMock } from './mockControl'
+import loggingPlugin from './loggingPlugin'
 
 export {
   useAsyncOp,
@@ -14,5 +15,6 @@ export {
   disableMock,
   RunningOpsProvider,
   useAsyncLoading,
-  registerPlugin
+  registerPlugin,
+  loggingPlugin
 }
