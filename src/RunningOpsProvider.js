@@ -28,10 +28,10 @@ const reducer = (state = {}, action) => {
 }
 
 export default ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, {})
+  const [runningOps, dispatch] = useReducer(reducer, {})
 
   const value = {
-    state,
+    runningOps,
     register: ({ runId, name, args = [] }) => dispatch({ type: REGISTER, runId, name, args }),
     deregister: ({ runId }) => dispatch({ type: DEREGISTER, runId })
   }

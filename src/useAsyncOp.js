@@ -1,10 +1,10 @@
 import { useCallback, useRef, useReducer, useContext } from 'react'
 import call from './call'
-import { context } from './Provider'
+import { context } from './RunningOpsProvider'
 
 const START = 'START'
 const COMPLETE = 'COMPLETE'
-const FAIL = 'ERROR'
+const ERROR = 'ERROR'
 
 const DUMMY_CONTEXT = {
   state: {},
@@ -18,7 +18,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case START:
       return { ...state, loading: true, error: null }
-    case FAIL:
+    case ERROR:
       return { result: null, loading: false, error: action.value }
     case COMPLETE:
       return { result: action.value, loading: false, error: null }
@@ -47,7 +47,7 @@ export default name => {
 
       const dispatchFail = value => {
         if (runIdRef.current !== runId) return
-        dispatch({ type: FAIL, value })
+        dispatch({ type: ERROR, value })
       }
 
       const dispatchComplete = value => {
@@ -58,10 +58,10 @@ export default name => {
       const dispatchDone = () => running.deregister({ runId })
 
       dispatchStart()
-      call(name, ...args)
-        .then(dispatchComplete)
-        .catch(dispatchFail)
-        .finally(dispatchDone)
+      const res = call(name, ...args)
+      res.then(dispatchComplete).catch(() => {})
+      res.catch(dispatchFail)
+      res.finally(dispatchDone).catch(() => {})
     },
     [runIdRef, dispatch, name, running]
   )

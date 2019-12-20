@@ -6,6 +6,7 @@
   "repository": "https://github.com/autodatadirect/async-ops",
   "scripts": {
     "build": "babel ./src -d ./dist",
+    "dev": "babel -w ./src -d ./dist",
     "prepublish": "npm run build",
     "lint": "standard \"./src/**/*.js\""
   },

@@ -10,7 +10,7 @@ export default (name, ...args) => {
 
   plugins.forEach(onStart)
   const result = get(name)(...args)
-  result.then(() => plugins.forEach(onComplete))
+  result.then(() => plugins.forEach(onComplete)).catch(() => {})
   result.catch(() => plugins.forEach(onError))
   return result
 }
