@@ -1,10 +1,18 @@
-import useAsyncOps from './useAsyncOps'
-import { register } from './operations'
-import { enable as enableMock, disable as disableMock } from './mock'
+import useAsyncOp from './useAsyncOp'
+import useAsyncEffect from './useAsyncEffect'
+import useAsyncLoading from './useAsyncLoading'
+import RunningOpsProvider from './RunningOpsProvider'
+import { register as registerPlugin } from './plugins'
+import { register } from './registry'
+import { enable as enableMock, disable as disableMock } from './mockControl'
 
 export {
-  useAsyncOps,
+  useAsyncOp,
+  useAsyncEffect,
   register,
   enableMock,
-  disableMock
+  disableMock,
+  RunningOpsProvider,
+  useAsyncLoading,
+  registerPlugin
 }
