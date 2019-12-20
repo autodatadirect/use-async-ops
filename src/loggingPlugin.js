@@ -5,9 +5,6 @@ const log = ({ id, event, name, args, error, result }) => {
   s += ' %c' + name
   s += '%c(' + JSON.stringify(args) + ')'
 
-  if (error) s += ' => ' + JSON.stringify(error)
-  if (result) s += ' => ' + JSON.stringify(result)
-
   let eventColor = '#22c'
   if (error) {
     eventColor = '#c22'
