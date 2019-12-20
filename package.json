@@ -1,7 +1,7 @@
 {
   "name": "use-async-ops",
   "version": "1.0.0",
-  "description": "A library for asynchronous calls in react",
+  "description": "A library for asynchronous calls in React",
   "main": "./dist/index.js",
   "repository": "https://github.com/autodatadirect/async-ops",
   "scripts": {
@@ -10,9 +10,8 @@
     "lint": "standard \"./src/**/*.js\" | snazzy"
   },
   "keywords": [
+    "react",
     "ops",
-    "saga",
-    "redux",
     "async"
   ],
   "author": "Auto Data Direct, Inc.",
@@ -23,7 +22,7 @@
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
     "@babel/runtime": "^7.7.6",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "snazzy": "^8.0.0",
     "standard": "^14.3.1"
   },
