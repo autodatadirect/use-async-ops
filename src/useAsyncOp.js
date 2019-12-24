@@ -1,4 +1,4 @@
-import { useCallback, useRef, useReducer, useContext } from 'react'
+import { useCallback, useRef, useReducer, useContext, useEffect } from 'react'
 import call from './call'
 import { context } from './RunningOpsProvider'
 
@@ -34,23 +34,30 @@ export default name => {
   const runIdRef = useRef()
   const [state, dispatch] = useReducer(reducer, initialState)
   const running = useContext(context) || DUMMY_CONTEXT
+  let mounted = true
+
+  useEffect(() => () => (mounted = false), [])
 
   const callFn = useCallback(
     (...args) => {
+      if (!mounted) return
       const runId = runIdInc++
       runIdRef.current = runId
 
       const dispatchStart = () => {
+        if (!mounted) return
         running.register({ runId, name, args })
         dispatch({ type: START })
       }
 
       const dispatchFail = value => {
+        if (!mounted) return
         if (runIdRef.current !== runId) return
         dispatch({ type: ERROR, value })
       }
 
       const dispatchComplete = value => {
+        if (!mounted) return
         if (runIdRef.current !== runId) return
         dispatch({ type: COMPLETE, value })
       }
