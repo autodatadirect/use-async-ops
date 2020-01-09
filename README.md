@@ -120,5 +120,5 @@ The `disableMock` function causes `callOperation` to use the `mockOperation` fun
 
 #### Arguments
 
-**`plugin : Function`** Plugin to be added; Takes name:String and ...args
+**`plugin : Function(name, ...args)`** Plugin to be added
 
