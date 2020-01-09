@@ -17,21 +17,22 @@ Use-Async-Ops is available on npm with the following command:
 ```
 
 ## API
-### `useAsyncOps(name:String, onStart: Function, onComplete: Function, onFailure: Function) : Function`
-The `useAsyncOps` hook provides the user with the asynchronous operation that has been previously registered as well as operation state values, including `loading`, `error`, and `result`.  You are also able to provide callback functions for begin, end, and error events.
+### `useAsyncOp(name:String) : Function`
+The `useAsyncOp` hook provides the user with the asynchronous operation that has been previously registered as well as operation state values, including `loading`, `error`, and `result`. 
+You are also able to provide callback functions for begin, end, and error events.
 
 #### Arguments
 
 **`name : String [required]`** The name of the operation.
 
-**`onStart : Function({ name, args })`** a function which will be called when the operation begins running.
-
-**`onComplete : Function({ name, args, result })`** a function which will be called when the operation is completed.
-
-**`onFailure : Function({ name, args, error })`** a function which will be called if the operation throws an error.
-
 #### Return : Object(call: Function, loading: boolean, result: any, error: any)
 **`call : Function`** An asynchronous method which wraps the operation.
+
+**`loading : boolean`** 
+
+**`result : any`** 
+
+**`error : any`** Error, if any exists. Null otherwise.
 
 #### Example
 ```javascript
@@ -50,8 +51,24 @@ const Test = () => {
 }
 ```
 
-### `register(name:String, operation:Function, mockOperation: Function) : Function`
-The `register` function registers an `operation` function and a `mockOperation` function under a given name.  Operations must be registered prior to being used by the application.
+### `useAsyncOp(name:String, args:any) : Function
+
+#### Arguments
+
+**`name : String [required]`** The name of the operation.
+
+**` args : any`**
+
+#### Return : Object(loading: boolean, result: any, error: any)
+
+**` loading : boolean`**
+
+**` result : any`**
+
+**` error: any`**
+
+### `register(name:String, operation:Function, mock: Function) : Function`
+The `register` function registers an `operation` function and a `mock` function under a given name.  Operations must be registered prior to being used by the application.
 
 #### Arguments
 
@@ -59,7 +76,7 @@ The `register` function registers an `operation` function and a `mockOperation` 
 
 **`operation(...args) : Function [required]`** A function that will be called when the Async-Ops operation is called by name.
 
-**`mockOperation(...args) : Function [optional]`** A function that will be called when the Async-Ops operation is called by name while `mock` is enabled.
+**`mock(...args) : Function [optional]`** A function that will be called when the Async-Ops operation is called by name while `mock` is enabled.
 
 #### Example
 ```javascript
@@ -77,3 +94,31 @@ The `enableMock` function causes `callOperation` to use the `mockOperation` func
 
 ### `disableMock() : Function`
 The `disableMock` function causes `callOperation` to use the `mockOperation` function rather than the  `operation` function.  The current mock status is set in the client's Local Storage.
+
+### `RunningOpsProvider({ children:??? }) : Function`
+
+#### Arguments
+
+**`children : JSX Element`**
+
+#### Return
+
+**`JSX Element`** The children element with a context provider wrapped around it
+
+### `useAsyncLoading(filter:Function) : Function`
+
+#### Arguments
+
+**`filter : Function`**
+
+#### Return
+
+**`bool`**
+
+### `registerPlugin(plugin:Function) : Function`
+
+
+#### Arguments
+
+**`plugin : Function`** Plugin to be added; Takes name:String and ...args
+
