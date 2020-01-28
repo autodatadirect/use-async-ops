@@ -1,6 +1,6 @@
 const NOOP = () => {}
 
-export default (name, ...args) => ({
+export default () => ({
   onError: e => {
     if (e && e.stack && e.message) console.error(e)
   },
