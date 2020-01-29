@@ -42,7 +42,7 @@ const log = ({ id, event, name, args, error, result }) => {
 
 let idInc = 0
 
-export default () => (name, ...args) => {
+export default () => (runInfo, name, ...args) => {
   const id = idInc++
   log({ id, event: 'START', name, args })
   return {

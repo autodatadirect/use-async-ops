@@ -3,9 +3,9 @@ import { context } from './RunningOpsProvider'
 
 export default filter => {
   const runningContext = useContext(context)
-  if (!runningContext) throw new Error('component must be wrapped with Provider for global loading status')
+  if (!runningContext) throw new Error('component must be wrapped with RunningOpsProvider for global loading status')
 
-  const a = Object.values(runningContext.runningOps)
+  const a = Object.values(runningContext)
 
   if (filter instanceof Function) {
     return a.filter(filter)
