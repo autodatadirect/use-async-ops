@@ -1,4 +1,3 @@
-
 const CSS_HEADER = 'color: #777;'
 const CSS_NAME = 'color: #000; font-weight: bold;'
 const CSS_ARGS = 'font-weight: normal;'
@@ -40,13 +39,15 @@ const log = ({ id, event, name, args, error, result }) => {
   console.log(s, ...logParams)
 }
 
-let idInc = 0
-
-export default () => (runInfo, name, ...args) => {
-  const id = idInc++
+export default next => async (context, response, error) => {
+  const { name, args, runId: id } = context
   log({ id, event: 'START', name, args })
-  return {
-    onError: e => log({ id, event: 'ERROR', name, args, error: e }),
-    onComplete: result => log({ id, event: 'COMPLETE', name, args, result })
+  try {
+    const r = await next(context, response, error)
+    log({ id, event: 'COMPLETE', name, args, result: r })
+    return r
+  } catch (e) {
+    log({ id, event: 'ERROR', name, args, error: e })
+    throw e
   }
 }
