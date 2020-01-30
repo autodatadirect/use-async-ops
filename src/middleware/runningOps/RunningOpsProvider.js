@@ -29,13 +29,13 @@ const reducer = (state = {}, action) => {
 
 const buildMiddleware = ({ dispatch }) => next => async (context, response, error) => {
   const { name, args, runId } = context
-  dispatch({ type: REGISTER, runId: runId, name, args })
+  dispatch({ type: REGISTER, runId, name, args })
   try {
     const r = await next(context, response, error)
-    dispatch({ type: DEREGISTER, runId: runId })
+    dispatch({ type: DEREGISTER, runId })
     return r
   } catch (e) {
-    dispatch({ type: DEREGISTER, runId: runId })
+    dispatch({ type: DEREGISTER, runId })
     throw e
   }
 }

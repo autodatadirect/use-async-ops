@@ -26,7 +26,7 @@ let hookIdInc = 0
 export default name => {
   if (!name) throw new Error('name required for useAsyncOp')
   const runIdRef = useRef()
-  const hookId = hookIdInc++
+  const hookIdRef = useRef(hookIdInc++)
   const [state, dispatch] = useReducer(reducer, initialState)
   let mounted = true
 
@@ -56,7 +56,7 @@ export default name => {
       }
 
       dispatchStart()
-      const res = invoke({ runId, hookId })(name, ...args)
+      const res = invoke({ runId, hookId: hookIdRef.current })(name, ...args)
       res.then(dispatchComplete).catch(() => {})
       res.catch(dispatchFail)
     },
