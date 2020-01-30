@@ -1,5 +1,5 @@
 import { useCallback, useRef, useReducer, useEffect } from 'react'
-import call from './call'
+import { invoke } from './middleware'
 
 const START = 'START'
 const COMPLETE = 'COMPLETE'
@@ -23,19 +23,12 @@ const reducer = (state, action) => {
 let runIdInc = 0
 let hookIdInc = 0
 
-const useRender = () => {
-  const [, forceRender] = useReducer(s => s + 1, 0)
-  return useCallback(() => forceRender({}), [forceRender])
-}
-
 export default name => {
   if (!name) throw new Error('name required for useAsyncOp')
   const runIdRef = useRef()
   const hookId = hookIdInc++
   const [state, dispatch] = useReducer(reducer, initialState)
   let mounted = true
-
-  const forceRender = useRender()
 
   useEffect(() => () => (mounted = false), [])
 
@@ -63,7 +56,7 @@ export default name => {
       }
 
       dispatchStart()
-      const res = call({ runId, hookId, forceRender })(name, ...args)
+      const res = invoke({ runId, hookId })(name, ...args)
       res.then(dispatchComplete).catch(() => {})
       res.catch(dispatchFail)
     },

@@ -27,20 +27,25 @@ const reducer = (state = {}, action) => {
   }
 }
 
-const buildPlugin = ({ dispatch }) => (runInfo, name, ...args) => {
-  dispatch({ type: REGISTER, runId: runInfo.runId, name, args })
-  return {
-    onError: e => dispatch({ type: DEREGISTER, runId: runInfo.runId }),
-    onComplete: result => dispatch({ type: DEREGISTER, runId: runInfo.runId })
+const buildMiddleware = ({ dispatch }) => next => async (context, response, error) => {
+  const { name, args, runId } = context
+  dispatch({ type: REGISTER, runId: runId, name, args })
+  try {
+    const r = await next(context, response, error)
+    dispatch({ type: DEREGISTER, runId: runId })
+    return r
+  } catch (e) {
+    dispatch({ type: DEREGISTER, runId: runId })
+    throw e
   }
 }
 
-export default ({ children, registerPlugin }) => {
+export default ({ children, prependMiddleware }) => {
   const [runningOps, dispatch] = useReducer(reducer, {})
   const registeredRef = useRef(false)
 
   if (!registeredRef.current) {
-    registerPlugin(buildPlugin({ dispatch }))
+    prependMiddleware(buildMiddleware({ dispatch }))
     registeredRef.current = true
   }
 
