@@ -1,124 +1,55 @@
-# Use-Async-Ops
-Use-Async-Ops is a library for performing asynchronous service calls in React applications using Hooks.
+# use-async-ops
+`use-async-ops` is a library for performing asynchronous operations in React applications utilizing hooks. This project is the successor to `async-ops` which was tightly coupled to Redux and Redux Sagas.  With the help of hooks, this project was created to remove those dependencies and open up new possibilites along with simplify the code base. The actions dispatched by `async-ops` can be enabled with the `use-async-ops-redux` middleware.
 
-## Motivations
-> Why does Use-Async-Ops exist?  What problem is this library trying to solve?
-
-**Use-Async-Ops** is trying to simplify and streamline performing asynchronous actions in a React context.
-
-The original **Async-Ops** project was tightly coupled to **Redux Sagas**.  Use-Async-Ops uses the hooks functionality of React to create a simpler and easier to maintain project.
-
-This project is designed as a jumping off point, to create specialized hooks -- for an example, see our other project **use-redux-async-ops**.
-
-## Usage
-Use-Async-Ops is available on npm with the following command:
+## Install
 ```bash
   npm install --save use-async-ops
 ```
 
-## API
-### `useAsyncOp(name:String) : Function`
+
+## useAsyncOp
 The `useAsyncOp` hook provides the user with the asynchronous operation that has been previously registered as well as operation state values, including `loading`, `error`, and `result`. 
-You are also able to provide callback functions for begin, end, and error events.
 
-#### Arguments
-
-**`name : String [required]`** The name of the operation.
-
-#### Return : Object(call: Function, loading: boolean, result: any, error: any)
-**`call : Function`** An asynchronous method which wraps the operation.
-
-**`loading : boolean`** 
-
-**`result : any`** 
-
-**`error : any`** Error, if any exists. Null otherwise.
-
-#### Example
 ```javascript
-import React. { useEffect } from 'react'
 import { useAsyncOps } from 'async-ops'
 
 const Test = () => {
-  const { call, loading, result } = useAsyncOps({ name: 'test' })
-  const useEffect(() => { call() }, [call])
-
-  if(loading) {
-    return <div>LOADING!</div>
-  }
-
-  return <div>{JSON.stringify(result)}</div>
+  const { call, loading, result, error } = useAsyncOps('opName')
+  ...
 }
 ```
 
-### `useAsyncOp(name:String, args:any) : Function
+| Argument Name | Type | Description | |
+|-------------|------|-------------|-|
+| name | `string` | the name of the operation |
 
-#### Arguments
 
-**`name : String [required]`** The name of the operation.
+| Return Name | Type | Description | |
+|-------------|------|-------------|-|
+| call | `function` | An asynchronous method which wraps the operation |
+| loading | `boolean` | boolean representing the loading state |
+| result | `any` | the result returned by the operation |
+| error | `any` | the error returned by the operation |
 
-**` args : any`**
+## useAsyncEffect
+The `useAsyncEffect` hook is a convenience hook to perform the common pattern of using `useEffect` to load data when a component mounts.  Instead of returning the call function, it will invoke it anything the hook arguments change and return the result and status fields just like `useAsyncOp`.
 
-#### Return : Object(loading: boolean, result: any, error: any)
-
-**` loading : boolean`**
-
-**` result : any`**
-
-**` error: any`**
-
-### `register(name:String, operation:Function, mock: Function) : Function`
-The `register` function registers an `operation` function and a `mock` function under a given name.  Operations must be registered prior to being used by the application.
-
-#### Arguments
-
-**`name : String [required]`** The name which will be used to key operation in Async-Ops.  This name will be referenced when calling the operation.
-
-**`operation(...args) : Function [required]`** A function that will be called when the Async-Ops operation is called by name.
-
-**`mock(...args) : Function [optional]`** A function that will be called when the Async-Ops operation is called by name while `mock` is enabled.
-
-#### Example
 ```javascript
-import { register } from 'async-ops'
+import { useAsyncOps } from 'async-ops'
 
-const service = request => window.fetch(request)
-
-const mock = request => Promise.reject(Error('request is invalid'))
-
-register('fetchData', service, mock)
+const Test = () => {
+  const { loading, error, result } = useAsyncEffect('opName', 'arg1', 'arg2')
+  ...
+}
 ```
 
-### `enableMock() : Function`
-The `enableMock` function causes `callOperation` to use the `mockOperation` function rather than the  `operation` function.  The current mock status is set in the client's Local Storage.
+| Argument Name | Type | Description | |
+|-------------|------|-------------|-|
+| name | `string` | the name of the operation |
+| ... args | `any` | the rest of the arguments will be passed to the registered operation function |
 
-### `disableMock() : Function`
-The `disableMock` function causes `callOperation` to use the `mockOperation` function rather than the  `operation` function.  The current mock status is set in the client's Local Storage.
-
-### `RunningOpsProvider({ children:??? }) : Function`
-
-#### Arguments
-
-**`children : JSX Element`**
-
-#### Return
-
-**`JSX Element`** The children element with a context provider wrapped around it
-
-### `useAsyncLoading(filter:Function) : Function`
-
-#### Arguments
-
-**`filter : Function`**
-
-#### Return
-
-**`bool`**
-
-### `registerPlugin(plugin:Function) : Function`
-
-
-#### Arguments
-
-**`plugin : Function(name, ...args)`** Plugin to be added
-
+| Return Name | Type | Description | |
+|-------------|------|-------------|-|
+| loading | `boolean` | boolean representing the loading state |
+| result | `any` | the result returned by the operation |
+| error | `any` | the error returned by the operation |
