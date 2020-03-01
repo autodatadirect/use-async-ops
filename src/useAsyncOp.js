@@ -23,7 +23,7 @@ const reducer = (state, action) => {
 let runIdInc = 0
 let hookIdInc = 0
 
-export default name => {
+export default ({ name, options = {} } = {}) => {
   if (!name) throw new Error('name required for useAsyncOp')
   const runIdRef = useRef()
   const hookIdRef = useRef(hookIdInc++)
@@ -56,7 +56,7 @@ export default name => {
       }
 
       dispatchStart()
-      const res = invoke({ runId, hookId: hookIdRef.current })(name, ...args)
+      const res = invoke({ options, runId, hookId: hookIdRef.current })(name, ...args)
       res.then(dispatchComplete).catch(() => {})
       res.catch(dispatchFail)
     },
