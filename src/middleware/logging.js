@@ -1,11 +1,12 @@
 const CSS_HEADER = 'color: #777;'
 const CSS_NAME = 'color: #000; font-weight: bold;'
+const CSS_OPTIONS = 'color: #555;'
 const CSS_ARGS = 'font-weight: normal;'
 const CSS_EVENT_COMPLETE = 'color: #272;'
 const CSS_EVENT_ERROR = 'color: #c22;'
 const CSS_EVENT_START = 'color: #22c;'
 
-const log = ({ id, event, name, args, error, result }) => {
+const log = ({ id, event, name, args, options, error, result }) => {
   let s = ''
   const logParams = []
 
@@ -22,6 +23,8 @@ const log = ({ id, event, name, args, error, result }) => {
   append(CSS_HEADER, '%s', 'ASYNC_OP')
   append(null, '%i', id)
   append(CSS_NAME, '%s', name)
+
+  append(CSS_OPTIONS, '%s', JSON.stringify(options))
 
   if (event === 'COMPLETE') {
     append(CSS_EVENT_COMPLETE, '%s', event)
@@ -40,14 +43,14 @@ const log = ({ id, event, name, args, error, result }) => {
 }
 
 export default next => async (context, response, error) => {
-  const { name, args, runId: id } = context
-  log({ id, event: 'START', name, args })
+  const { name, args, options, runId: id } = context
+  log({ id, event: 'START', name, args, options })
   try {
     const r = await next(context, response, error)
-    log({ id, event: 'COMPLETE', name, args, result: r })
+    log({ id, event: 'COMPLETE', name, args, options, result: r })
     return r
   } catch (e) {
-    log({ id, event: 'ERROR', name, args, error: e })
+    log({ id, event: 'ERROR', name, args, options, error: e })
     throw e
   }
 }

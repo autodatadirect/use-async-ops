@@ -1,9 +1,8 @@
 import call from './call'
 import end from './end'
-import logging from './logging'
 import mock from './mock'
 
-let middlewareStack = [logging, mock, call]
+let middlewareStack = [mock, call]
 let stack
 
 const compose = (...funcs) =>
@@ -30,4 +29,4 @@ export const set = newStack => {
   buildStack()
 }
 
-export const invoke = ({ runId, hookId }) => async (name, ...args) => stack({ name, args, runId, hookId })
+export const invoke = ({ options, runId, hookId }) => async (name, ...args) => stack({ name, args, runId, hookId, options })
