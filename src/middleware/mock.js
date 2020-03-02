@@ -28,6 +28,6 @@ export default next => async (context, response, error) => {
       }
     }
   }
-
+  if (response === undefined) response = null
   return next(context, response, error)
 }

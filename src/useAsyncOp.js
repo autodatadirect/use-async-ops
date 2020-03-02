@@ -59,6 +59,7 @@ export default name => {
       const res = invoke({ runId, hookId: hookIdRef.current })(name, ...args)
       res.then(dispatchComplete).catch(() => {})
       res.catch(dispatchFail)
+      return res
     },
     [runIdRef, dispatch, name]
   )
