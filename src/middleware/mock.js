@@ -27,7 +27,7 @@ export default next => async (context, response, error) => {
         error = e
       }
     }
+    if (response === undefined) response = null
   }
-  if (response === undefined) response = null
   return next(context, response, error)
 }
