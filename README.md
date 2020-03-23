@@ -38,7 +38,7 @@ The `useAsyncEffect` hook is a convenience hook to perform the common pattern of
 import { useAsyncEffect } from 'use-async-ops'
 
 const Test = () => {
-  const { loading, error, result } = useAsyncEffect({ name: 'opName', args: ['arg1', 'arg2'] })
+  const { loading, error, result } = useAsyncEffect({ name: 'opName' }, ['arg1', 'arg2'])
   ...
 }
 ```
