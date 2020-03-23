@@ -11,10 +11,10 @@
 The `useAsyncOp` hook provides the user with the asynchronous operation that has been previously registered as well as operation state values, including `loading`, `error`, and `result`. 
 
 ```javascript
-import { useAsyncOps } from 'async-ops'
+import { useAsyncOp } from 'async-ops'
 
 const Test = () => {
-  const { call, loading, result, error } = useAsyncOps('opName')
+  const { call, loading, result, error } = useAsyncOp({ name: 'opName' })
   ...
 }
 ```
@@ -32,13 +32,13 @@ const Test = () => {
 | error | `any` | the error returned by the operation |
 
 ## useAsyncEffect
-The `useAsyncEffect` hook is a convenience hook to perform the common pattern of using `useEffect` to load data when a component mounts.  Instead of returning the call function, it will invoke it anything the hook arguments change and return the result and status fields just like `useAsyncOp`.
+The `useAsyncEffect` hook is a convenience hook to perform the common pattern of using `useEffect` to load data when a component mounts.  Instead of returning the call function, it will invoke it any time the hook arguments change and return the result and status fields just like `useAsyncOp`.
 
 ```javascript
-import { useAsyncOps } from 'async-ops'
+import { useAsyncEffect } from 'use-async-ops'
 
 const Test = () => {
-  const { loading, error, result } = useAsyncEffect('opName', 'arg1', 'arg2')
+  const { loading, error, result } = useAsyncEffect({ name: 'opName', args: ['arg1', 'arg2'] })
   ...
 }
 ```
