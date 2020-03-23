@@ -5,7 +5,7 @@ const hasChanged = (lastValue, thisValue) => JSON.stringify(lastValue) !== JSON.
 
 const clone = o => JSON.parse(JSON.stringify(o))
 
-export default ({ name, options, args = [] }) => {
+export default ({ name, options }, ...args) => {
   const callRef = useRef()
   const { call, loading, error, result } = useAsyncOp({ name, options })
 
