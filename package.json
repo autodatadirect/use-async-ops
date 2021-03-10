@@ -1,6 +1,6 @@
 {
   "name": "use-async-ops",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "A library for asynchronous calls in React",
   "main": "./dist/index.js",
   "repository": "https://github.com/autodatadirect/async-ops",
@@ -18,16 +18,16 @@
   "author": "Auto Data Direct, Inc.",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.8.3",
-    "@babel/core": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
-    "@babel/preset-react": "^7.8.3",
-    "@babel/runtime": "^7.8.3",
-    "standard": "^14.3.1"
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/runtime": "^7.13.10",
+    "standard": "^14.3.4"
   },
   "peerDependencies": {
-    "react": "^16.12.0"
+    "react": ">=16.12.0"
   },
   "eslintConfig": {
     "extends": "react-app"
