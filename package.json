@@ -18,13 +18,13 @@
   "author": "Auto Data Direct, Inc.",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.8.7",
-    "@babel/core": "^7.8.7",
-    "@babel/plugin-proposal-object-rest-spread": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/preset-react": "^7.8.7",
-    "@babel/runtime": "^7.8.7",
-    "standard": "^14.3.1"
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/runtime": "^7.13.10",
+    "standard": "^14.3.4"
   },
   "peerDependencies": {
     "react": ">=16.12.0"
